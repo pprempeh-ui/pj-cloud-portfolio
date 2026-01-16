@@ -2,7 +2,7 @@ name: Deploy to S3 and Invalidate CloudFront
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -27,6 +27,7 @@ jobs:
             --exclude ".github/*"
 
       - name: Invalidate CloudFront cache
+        continue-on-error: true
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
