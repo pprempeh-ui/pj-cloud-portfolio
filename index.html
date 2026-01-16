@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PJ | Cloud Portfolio</title>
+  <meta name="description" content="PJ's cloud portfolio - AWS S3 + CloudFront hosted site." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --muted:#a9b4cc;
+      --text:#eaf0ff;
+      --accent:#6ea8fe;
+      --accent2:#7ee787;
+      --border:rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(110,168,254,.25), transparent 60%),
+        radial-gradient(700px 450px at 90% 10%, rgba(126,231,135,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .container{max-width:980px;margin:0 auto;padding:28px 18px 56px}
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      background:rgba(17,26,46,.7);
+      backdrop-filter: blur(10px);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      position:sticky;top:14px;z-index:10;
+    }
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.4px}
+    .badge{
+      font-size:12px;padding:4px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+    }
+    .nav a{font-size:14px;color:var(--muted);text-decoration:none;margin-left:12px}
+    .nav a:hover{color:var(--text)}
+    .hero{
+      margin-top:26px;
+      display:grid;grid-template-columns:1.25fr .75fr;gap:18px;
+    }
+    @media (max-width:860px){.hero{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--border);
+      background:rgba(17,26,46,.7);
+      backdrop-filter: blur(10px);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    h1{margin:0 0 10px;font-size:44px;line-height:1.1}
+    .subtitle{color:var(--muted);font-size:16px;margin:0}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .chip{
+      font-size:13px;color:var(--text);
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    .cta{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;font-weight:600;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,168,254,.9), rgba(126,231,135,.65));
+      color:#07101f;border:none;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    h2{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted);margin:0}
+    .kpi{display:flex;gap:10px;align-items:center;margin-top:14px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 4px rgba(126,231,135,.12)}
+    .list{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .footer{
+      margin-top:24px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono";
+      font-size: 12px;
+      color: #cfe1ff;
+      background: rgba(110,168,254,.12);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="nav">
+      <div class="brand">
+        <span>PJ</span>
+        <span class="badge">Cloud Portfolio</span>
+      </div>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Hello, I’m PJ 👋</h1>
+        <p class="subtitle">
+          I’m building cloud projects to level up into a Cloud / DevOps role.
+          This site is hosted on <code>S3</code> and delivered globally with <code>CloudFront</code>.
+        </p>
+
+        <div class="chips">
+          <span class="chip">AWS</span>
+          <span class="chip">S3</span>
+          <span class="chip">CloudFront</span>
+          <span class="chip">IAM</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Networking</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+
+        <div class="kpi">
+          <span class="dot"></span>
+          <span class="muted">Live now via CloudFront CDN (private S3 origin).</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>What I’m focusing on</h2>
+        <p class="muted">Hands-on projects + solid fundamentals.</p>
+        <ul class="list">
+          <li>Secure static site hosting</li>
+          <li>Serverless + automation next</li>
+          <li>CI/CD and infrastructure patterns</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="card" style="margin-top:18px;">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card" style="padding:16px;">
+          <h2>1) S3 + CloudFront Portfolio</h2>
+          <p class="muted">Private S3 origin using CloudFront access control + CDN delivery.</p>
+          <p class="muted" style="margin-top:10px;">
+            Highlights: secure origin, default root object, cache invalidation.
+          </p>
+        </div>
+
+        <div class="card" style="padding:16px;">
+          <h2>2) Next project</h2>
+          <p class="muted">Serverless API (Lambda + API Gateway) + DynamoDB.</p>
+          <p class="muted" style="margin-top:10px;">Coming soon.</p>
+        </div>
+
+        <div class="card" style="padding:16px;">
+          <h2>3) CI/CD</h2>
+          <p class="muted">GitHub → auto deploy to S3 + CloudFront invalidation.</p>
+          <p class="muted" style="margin-top:10px;">Coming soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="card" style="margin-top:18px;">
+      <h2>Skills</h2>
+      <p class="muted">
+        AWS fundamentals, identity & access, Linux, troubleshooting, and building reliable systems.
+      </p>
+      <ul class="list">
+        <li>AWS: S3, CloudFront, IAM (and learning more)</li>
+        <li>OS: Windows Server + Linux fundamentals</li>
+        <li>Networking: DNS, HTTP/S, basic routing concepts</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px;">
+      <h2>Contact</h2>
+      <p class="muted">
+        Add your LinkedIn/GitHub/email here.
+      </p>
+      <ul class="list">
+        <li>LinkedIn: <span class="muted">your-link-here</span></li>
+        <li>GitHub: <span class="muted">your-link-here</span></li>
+        <li>Email: <span class="muted">your-email-here</span></li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      Built by PJ • Hosted on AWS S3 • Delivered with CloudFront
+    </div>
+
+  </div>
+</body>
+</html>
