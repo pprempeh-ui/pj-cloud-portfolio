@@ -4,7 +4,7 @@ Static portfolio website hosted on **Amazon S3** and delivered globally with **C
 Deployments are automated using **GitHub Actions** (CI/CD) with an IAM user that has least-privilege permissions.
 
 ## Live Site
-- CloudFront URL: https://d192ivfc2s4l4d.cloudfront.net
+- CloudFront URL: https://d252ge09mq1187.cloudfront.net
 
 ## Architecture
 - **S3**: Stores website files (private origin)
